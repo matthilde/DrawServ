@@ -1,0 +1,16 @@
+package fr.univlorraine.sae.packets;
+
+import fr.univlorraine.sae.Packet;
+import fr.univlorraine.sae.ServeurThread;
+
+public class Default {
+	public static Packet defaultPacketChain(ServeurThread st) {
+		Packet p = new Clear(st);
+		
+		p	.setNext(new Rectangle(st))
+			.setNext(new SetColor(st))
+			.setNext(new Update(st))
+			.setNext(new Line(st));
+		return p;
+	}
+}
