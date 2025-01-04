@@ -1,6 +1,8 @@
 package fr.univlorraine.sae;
 
 import fr.univlorraine.sae.packets.Default;
+import fr.univlorraine.sae.responses.*;
+import fr.univlorraine.sae.Response;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -59,18 +61,19 @@ public class ServeurThread extends Thread {
 	public BufferStrategy strat() { return this.strat; }
 	public Viewport viewport() { return this.viewport; }
 	
-	private boolean interpretPacket(String command) {
+	private Response interpretPacket(String command) {
 		command = command.trim();
 		Packet currentPacket = packets;
-		boolean response = false;
+		Response response = null;
 		
-		while (!response && currentPacket != null) {
+		while (response == null && currentPacket != null) {
 			response = currentPacket.handle(command);
-			if (!response) {
+			if (response == null) {
 				currentPacket = currentPacket.getNext();
 			}
 		}
-		
+
+		if (response == null) response = new UnknownCommand();
 		return response;
 	}
 	
@@ -93,13 +96,9 @@ public class ServeurThread extends Thread {
 				}
 				
 				try {
-					if (interpretPacket(line)) {
-						outp.println("SUCCESS");
-					} else {
-						outp.println("UNKNOWN_COMMAND");
-					}
+					outp.println(interpretPacket(line).send());
 				} catch (Exception e) {
-					outp.println("ERROR " + e.getMessage());
+					outp.println(new Err(e.getMessage()));
 				}
 				
 				outp.flush();

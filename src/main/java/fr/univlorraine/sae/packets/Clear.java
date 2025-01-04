@@ -1,6 +1,8 @@
 package fr.univlorraine.sae.packets;
 
 import fr.univlorraine.sae.Packet;
+import fr.univlorraine.sae.Response;
+import fr.univlorraine.sae.responses.*;
 import fr.univlorraine.sae.ServeurThread;
 
 import java.util.InputMismatchException;
@@ -12,10 +14,10 @@ public class Clear extends Packet {
 	}
 	
 	@Override
-	protected boolean handleScanner(Scanner msg) throws InputMismatchException {
+	protected Response handleScanner(Scanner msg) throws InputMismatchException {
 		String command = msg.next().trim();
 		if (!command.equalsIgnoreCase("CLEAR")) {
-			return false;
+			return null;
 		}
 		
 		final int width = sThread.frame().getWidth();
@@ -23,6 +25,6 @@ public class Clear extends Packet {
 		
 		sThread.graphics().clearRect(0, 0, width, height);
 		
-		return true;
+		return new Ok();
 	}
 }

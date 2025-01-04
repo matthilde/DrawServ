@@ -16,10 +16,10 @@ public abstract class Packet {
 		return next;
 	}	
 	
-	public boolean handle(String msg) {
+	public Response handle(String msg) {
 		Scanner sc = new Scanner(msg).useDelimiter(" ");
 		return handleScanner(sc);
 	}
 	
-	protected abstract boolean handleScanner(Scanner msg);
+	protected abstract Response handleScanner(Scanner msg);
 }

@@ -1,7 +1,9 @@
 package fr.univlorraine.sae.packets;
 
 import fr.univlorraine.sae.Packet;
+import fr.univlorraine.sae.Response;
 import fr.univlorraine.sae.ServeurThread;
+import fr.univlorraine.sae.responses.Ok;
 
 import java.awt.Color;
 import java.util.InputMismatchException;
@@ -13,10 +15,10 @@ public class SetColor extends Packet {
 	}
 	
 	@Override
-	protected boolean handleScanner(Scanner msg) throws InputMismatchException {
+	protected Response handleScanner(Scanner msg) throws InputMismatchException {
 		String command = msg.next().trim();
 		if (!command.equalsIgnoreCase("COLOR")) {
-			return false;
+			return null;
 		}
 
 		final int r, g, b;
@@ -26,6 +28,6 @@ public class SetColor extends Packet {
 		
 		sThread.graphics().setColor(new Color(r, g, b));
 
-		return true;
+		return new Ok();
 	}
 }
