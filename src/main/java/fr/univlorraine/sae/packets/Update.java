@@ -8,6 +8,12 @@ import fr.univlorraine.sae.responses.Ok;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Met a jour l'ecran
+ *
+ * Usage cote client:
+ * 		UPDATE
+ */
 public class Update extends Packet {
 	public Update(ServeurThread st) {
 		super(st);

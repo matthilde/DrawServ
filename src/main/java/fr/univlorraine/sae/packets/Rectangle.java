@@ -9,6 +9,14 @@ import fr.univlorraine.sae.responses.Ok;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Trace un rectangle
+ *
+ * Usage cote client:
+ * 		RECTANGLE x1 y1 x2 y2
+ * Exemple:
+ * 		RECTANGLE -1.0 -0.95 0.5 0.2
+ */
 public class Rectangle extends Packet {
 	public Rectangle(ServeurThread st) {
 		super(st);
@@ -26,8 +34,7 @@ public class Rectangle extends Packet {
 		y1 = msg.nextDouble();
 		x2 = msg.nextDouble();
 		y2 = msg.nextDouble();
-		
-		
+
 		final Vec2 v1, v2;
 		v1 = sThread.viewport().translate(new Vec2(x1, y1));
 		v2 = sThread.viewport().translate(new Vec2(x2, y2));

@@ -8,6 +8,12 @@ import fr.univlorraine.sae.ServeurThread;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Reinitialise la fenetre de dessin.
+ *
+ * Utilisation cote client:
+ * 		CLEAR
+ */
 public class Clear extends Packet {
 	public Clear(ServeurThread st) {
 		super(st);

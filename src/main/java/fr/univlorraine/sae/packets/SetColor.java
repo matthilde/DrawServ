@@ -9,6 +9,14 @@ import java.awt.Color;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Selectionne la couleur de dessin. Les couleurs sont comprises entre 0 et 255 chacune.
+ *
+ * Usage cote client:
+ * 		COLOR rouge vert bleu
+ * Exemple d'utilisation:
+ * 		COLOR 128 255 34
+ */
 public class SetColor extends Packet {
 	public SetColor(ServeurThread st) {
 		super(st);

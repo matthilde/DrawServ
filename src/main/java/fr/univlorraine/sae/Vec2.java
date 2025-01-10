@@ -1,5 +1,8 @@
 package fr.univlorraine.sae;
 
+/**
+ * Point deux dimensions. Cette classe va servir a faire des operations vectorielles.
+ */
 public class Vec2 {
 	public final double x, y;
 	
