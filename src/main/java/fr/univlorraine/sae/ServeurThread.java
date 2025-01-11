@@ -69,7 +69,7 @@ public class ServeurThread extends Thread {
 		graphics = strat.getDrawGraphics();
 		
 		try {
-			viewport = new Viewport(800, 600, new Vec2(-1.0, -1.0), new Vec2(1.0, 1.0));
+			viewport = new Viewport(800, 600, new Vec2(-1.0, -0.75), new Vec2(1.0, 0.75));
 		} catch (DrawServException e) {
 			viewport = null;
 		}

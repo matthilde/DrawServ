@@ -10,6 +10,8 @@ public class Vec2 {
 		this.x = x;
 		this.y = y;
 	}
+
+	public Vec2 copy() { return new Vec2(x, y); }
 	
 	public Vec2 add(Vec2 v) {
 		return new Vec2(x + v.x, y + v.y);

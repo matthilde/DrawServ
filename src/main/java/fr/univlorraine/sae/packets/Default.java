@@ -16,7 +16,9 @@ public class Default {
 			.setNext(new Update(st))
 			.setNext(new Line(st))
 			.setNext(new Ellipse(st))
-			.setNext(new Viewport(st));
+			.setNext(new Viewport(st))
+			.setNext(new Text(st));
+
 		return p;
 	}
 }

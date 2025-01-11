@@ -17,7 +17,7 @@ public class Viewport {
 	 */
 	public Viewport(int width, int height, Vec2 lower, Vec2 higher) throws DrawServException {
 		setResolution(width, height);
-		setBounds(new Vec2(-1.0, -1.0), new Vec2(1.0, 1.0));
+		setBounds(lower, higher);
 	}
 
 	/**
@@ -32,8 +32,8 @@ public class Viewport {
 		if (higher.x <= lower.x || higher.y <= lower.y)
 			throw new DrawServException("Lower bound is higher than higher bound");
 		
-		lowerBound = lower;
-		higherBound = higher;
+		lowerBound = lower.copy();
+		higherBound = higher.copy();
 		divider = higher.sub(lower);
 	}
 
